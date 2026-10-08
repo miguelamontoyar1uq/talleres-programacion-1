@@ -179,7 +179,7 @@ public class Tienda {
         List<Factura> listaFacturasResultado = new ArrayList<>();
         for(Factura facturaAux: listaFacturas){
             String cliente = String.valueOf((facturaAux.cliente()));
-            if(cliente.charAt(0)==('r')){
+            if(cliente.charAt(0)==(letraInicial)){
                 listaFacturasResultado.add(facturaAux);
             }
         }
