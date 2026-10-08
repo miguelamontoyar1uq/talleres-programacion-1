@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.model;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class Tienda {
@@ -157,6 +158,19 @@ public class Tienda {
                 .toList();
     }
 
-
+    // 3. Obtener la lista de clientes que hayan comprado el 07 de octubre de 2026 (Estaba intentando practicar programación declarativa, pero este sí me quedó grande profe, y si hay problema en que los otros estén así, me avisa y los cambio.)
+    public List<Cliente> obtenerClientesPorFecha(){
+        LocalDate fechaBuscada = LocalDate.of(2026, 10, 7);
+        List<Cliente> listaClientesResultado = new ArrayList<>();
+        for(Factura factura: listaFacturas){
+            if(factura.fecha().equals(fechaBuscada)){
+                Cliente cliente = factura.cliente();
+                if(!listaClientesResultado.contains(cliente)){
+                    listaClientesResultado.add(cliente);
+                }
+            }
+        }
+        return listaClientesResultado;
+    }
 
 }
