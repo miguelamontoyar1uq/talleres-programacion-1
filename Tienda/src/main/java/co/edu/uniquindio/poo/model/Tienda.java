@@ -137,4 +137,11 @@ public class Tienda {
                         .sum())
                 .orElse(0.0);
     }
+
+    // 1. Obtener los productos con una cantidad disponible mayor o igual a 10
+    public List<Producto> obtenerProductosDisponibles() {
+        return listaProductos.values().stream()
+                .filter(producto -> producto.getCantidadDisponible() >= 10)
+                .toList();
+    }
 }
