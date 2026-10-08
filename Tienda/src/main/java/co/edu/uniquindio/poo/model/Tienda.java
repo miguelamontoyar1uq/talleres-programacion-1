@@ -134,9 +134,13 @@ public class Tienda {
         return obtenerFactura(codigo)
                 .map(factura -> factura.listaDetallesFactura().stream()
                         .mapToDouble(detalle -> detalle.calcularSubtotal()) // Reemplaza "calcularSubtotal()" por el método real de tu clase DetalleFactura (ej: getSubtotal() o getCantidad() * getPrecio())
+                        .mapToDouble(detalle -> detalle.calcularSubTotal())
                         .sum())
                 .orElse(0.0);
     }
+
+    //TALLER
+
 
     // 1. Obtener los productos con una cantidad disponible mayor o igual a 10
     public List<Producto> obtenerProductosDisponibles() {
@@ -144,4 +148,15 @@ public class Tienda {
                 .filter(producto -> producto.getCantidadDisponible() >= 10)
                 .toList();
     }
+
+    // 2. Obtener los códigos de los productos con una cantidad disponible mayor o igual a 10 y menor que 50
+    public List<String> obtenerCodigosProductos10a50() {
+        return listaProductos.values().stream()
+                .filter(producto -> producto.getCantidadDisponible() >= 10 && producto.getCantidadDisponible() < 50)
+                .map(producto -> producto.getCodigo())
+                .toList();
+    }
+
+
+
 }
