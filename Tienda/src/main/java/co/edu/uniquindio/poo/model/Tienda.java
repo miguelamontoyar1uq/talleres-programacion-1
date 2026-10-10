@@ -198,7 +198,7 @@ public class Tienda {
     }
 
     // 6. Obtener las facturas que tengan un cliente donde su nombre sea Juan y haya comprado un celular de marca Iphone 16 pro max
-    
+
     public List<Factura> obtenerFacturasPorNombreYProducto(String nombreProductoBuscado, String nombreClienteBuscado){
         List<Factura> listaFacturasResultado = new ArrayList<>();
         for(Factura facturaAux: listaFacturas){
@@ -210,6 +210,15 @@ public class Tienda {
     }
 
     // 7. Implementar un metodo que reciba una categoría y retorne todos los productos registrados que pertenezcan a ella.
+    public List<Producto> obtenerProductosPorCategoria(Categoria categoriaBuscada) {
+        List<Producto> listaProductosResultado = new ArrayList<>();
+        for (Producto productoAux : listaProductos.values()) {
+            if (productoAux.getCategoria() == categoriaBuscada) {
+                listaProductosResultado.add(productoAux);
+            }
+        }
+        return listaProductosResultado;
+    }
 
     // 8. Implementar un metodo que reciba un precio mínimo y un precio máximo, y retorne los productos cuyo precio se encuentre dentro de ese rango, incluyendo ambos límites.
 
