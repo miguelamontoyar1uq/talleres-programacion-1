@@ -229,8 +229,13 @@ public class Tienda {
         }
         return listaProductosResultado;
     }
-    
+
     // 9. Implementar un metodo que retorne todos los productos registrados en la tienda, ordenados de menor a mayor según su precio.
+    public List<Producto> obtenerProductosOrdenadosPorPrecio() {
+        List<Producto> listaProductosResultado = new ArrayList<>(listaProductos.values());
+        listaProductosResultado.sort(Comparator.comparingDouble(Producto::getValor)); //Aquí le pedí ayuda a una IA para facilitar el trabajo de comparación, me recomendó hacerlo utilizando este java.util.Comparator
+        return listaProductosResultado;
+    }
 
     // 10. Implementar un metodo que identifique el producto con el precio más alto de la tienda. Si no existen productos registrados, el metodo debe retornar un Optional vacío.
 }
