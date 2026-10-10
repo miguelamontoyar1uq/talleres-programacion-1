@@ -33,4 +33,12 @@ public class DetalleFactura {
     public float calcularSubTotal(){
         return (float) (cantidadComprada * getProducto().getValor());
     }
+
+    public boolean buscarProductoPorNombre(String nombreProductoBuscado) {
+        Producto producto = getProducto();
+        if (producto != null && producto.getNombre() != null) {
+            return producto.getNombre().equalsIgnoreCase(nombreProductoBuscado);
+        }
+        return false;
+    }
 }

@@ -186,4 +186,25 @@ public class Tienda {
         return listaFacturasResultado;
     }
 
+    // 5. Obtener las facturas donde se haya comprado un celular de marca Iphone 16 pro max
+    public List<Factura> obtenerFacturasPorNombreProducto(String nombreProductoBuscado){
+        List<Factura> listaFacturasResultado = new ArrayList<>();
+        for(Factura facturaAux: listaFacturas){
+            if(facturaAux.contieneProducto(nombreProductoBuscado)){
+                listaFacturasResultado.add(facturaAux);
+            }
+        }
+        return listaFacturasResultado;
+    }
+
+    // 6. Obtener las facturas que tengan un cliente donde su nombre sea Juan y haya comprado un celular de marca Iphone 16 pro max
+
+
+    // 7. Implementar un metodo que reciba una categoría y retorne todos los productos registrados que pertenezcan a ella.
+
+    // 8. Implementar un metodo que reciba un precio mínimo y un precio máximo, y retorne los productos cuyo precio se encuentre dentro de ese rango, incluyendo ambos límites.
+
+    // 9. Implementar un metodo que retorne todos los productos registrados en la tienda, ordenados de menor a mayor según su precio.
+
+    // 10. Implementar un metodo que identifique el producto con el precio más alto de la tienda. Si no existen productos registrados, el metodo debe retornar un Optional vacío.
 }
