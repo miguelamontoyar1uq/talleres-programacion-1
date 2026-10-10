@@ -198,7 +198,16 @@ public class Tienda {
     }
 
     // 6. Obtener las facturas que tengan un cliente donde su nombre sea Juan y haya comprado un celular de marca Iphone 16 pro max
-
+    
+    public List<Factura> obtenerFacturasPorNombreYProducto(String nombreProductoBuscado, String nombreClienteBuscado){
+        List<Factura> listaFacturasResultado = new ArrayList<>();
+        for(Factura facturaAux: listaFacturas){
+            if(facturaAux.contieneProducto(nombreProductoBuscado) && facturaAux.cliente() != null && facturaAux.cliente().getNombreCompleto().equalsIgnoreCase(nombreClienteBuscado)){
+                listaFacturasResultado.add(facturaAux);
+            }
+        }
+        return listaFacturasResultado;
+    }
 
     // 7. Implementar un metodo que reciba una categoría y retorne todos los productos registrados que pertenezcan a ella.
 
