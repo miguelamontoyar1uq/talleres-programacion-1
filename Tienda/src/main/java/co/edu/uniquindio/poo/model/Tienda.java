@@ -134,7 +134,6 @@ public class Tienda {
     public double calcularValorFactura(String codigo) {
         return obtenerFactura(codigo)
                 .map(factura -> factura.listaDetallesFactura().stream()
-                        .mapToDouble(detalle -> detalle.calcularSubtotal()) // Reemplaza "calcularSubtotal()" por el método real de tu clase DetalleFactura (ej: getSubtotal() o getCantidad() * getPrecio())
                         .mapToDouble(detalle -> detalle.calcularSubTotal())
                         .sum())
                 .orElse(0.0);
@@ -221,7 +220,16 @@ public class Tienda {
     }
 
     // 8. Implementar un metodo que reciba un precio mínimo y un precio máximo, y retorne los productos cuyo precio se encuentre dentro de ese rango, incluyendo ambos límites.
-
+    public List<Producto> obtenerProductosPorRangoPrecio(double precioMinimo, double precioMaximo) {
+        List<Producto> listaProductosResultado = new ArrayList<>();
+        for (Producto productoAux : listaProductos.values()) {
+            if (productoAux.getValor() >= precioMinimo && productoAux.getValor() <= precioMaximo) {
+                listaProductosResultado.add(productoAux);
+            }
+        }
+        return listaProductosResultado;
+    }
+    
     // 9. Implementar un metodo que retorne todos los productos registrados en la tienda, ordenados de menor a mayor según su precio.
 
     // 10. Implementar un metodo que identifique el producto con el precio más alto de la tienda. Si no existen productos registrados, el metodo debe retornar un Optional vacío.
