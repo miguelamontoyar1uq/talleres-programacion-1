@@ -14,8 +14,13 @@ public class PrimaryController {
     @FXML
     private URL location;
 
+    // Botón Gestión Clientes
     @FXML
     private Button primaryButton;
+
+    // Botón Gestión Productos
+    @FXML
+    private Button primaryButton1;
 
     private App app;
 
@@ -23,6 +28,12 @@ public class PrimaryController {
     @FXML
     void onOpenCrudCliente() {
         app.openCrudCliente();
+    }
+
+    // Botón "Gestión de productos"
+    @FXML
+    void onOpenCrudProducto() {
+        app.openCrudProducto();
     }
 
     // Recibe App desde App.java

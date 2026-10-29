@@ -1,5 +1,7 @@
 package co.edu.uniquindio.poo.empresajfx;
 
+import co.edu.uniquindio.poo.empresajfx.model.Producto;
+import co.edu.uniquindio.poo.empresajfx.viewController.ProductoViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -72,10 +74,31 @@ public class App extends Application {
         }
     }
 
-    // Cliente por defecto para que la lista no empiece vacía
+    // Carga la pantalla de CRUD Producto
+    public void openCrudProducto() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("crudProducto.fxml"));
+            AnchorPane rootLayout = (AnchorPane) loader.load();
+
+            // Conexión del ProductoController con App
+            ProductoViewController productoViewController = loader.getController();
+            productoViewController.setApp(this);
+
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Datos por defecto para que las listas no empiecen vacías
     public void inicializarData() {
         Cliente cliente = new Cliente("12233", "Juan", "Gómez");
         empresa.crearCliente(cliente);
+        Producto producto = new Producto("10", "NVIDIA GeForce RTX 0560", "3", "NVIDIA");
+        empresa.crearProducto(producto);
     }
 
     public static void main(String[] args) {
